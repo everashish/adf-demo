@@ -1,0 +1,17 @@
+{
+	"name": "SinkLinked",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sql-db-server1.database.windows.net",
+			"database": "sql_db1",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "admin123",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEEwMUMwQUZBLTkyRjQtNEEyRi04MTQ1LTU2OUM5NUM2MjExM18xNGNkNzRmMy02ZTVmLTQwZTMtOGU1YS04MzlhZTA2ZmRjMTgiDQp9"
+		}
+	}
+}

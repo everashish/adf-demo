@@ -1,5 +1,5 @@
 {
-	"name": "pipeline7_GetMetadata_with_If_Condition",
+	"name": "pipeline8_Until_with_GetMetadata",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DelimitedText7",
+						"referenceName": "DelimitedText8",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -32,8 +32,8 @@
 				}
 			},
 			{
-				"name": "If Condition1",
-				"type": "IfCondition",
+				"name": "Until1",
+				"type": "Until",
 				"dependsOn": [
 					{
 						"activity": "Get Metadata1",
@@ -48,54 +48,44 @@
 						"value": "@activity('Get Metadata1').output.exists",
 						"type": "Expression"
 					},
-					"ifFalseActivities": [
+					"activities": [
 						{
-							"name": "Set variable1",
-							"type": "SetVariable",
+							"name": "Delete1",
+							"type": "Delete",
 							"dependsOn": [],
 							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
 								"secureOutput": false,
 								"secureInput": false
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "value2",
-								"value": {
-									"value": "@activity('Get Metadata1').output.exists",
-									"type": "Expression"
+								"dataset": {
+									"referenceName": "Binary3",
+									"type": "DatasetReference"
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "AzureDataLakeStorage1",
+										"type": "LinkedServiceReference"
+									},
+									"path": ""
+								},
+								"enableLogging": true,
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
 								}
 							}
 						}
 					],
-					"ifTrueActivities": [
-						{
-							"name": "Execute Pipeline2",
-							"type": "ExecutePipeline",
-							"dependsOn": [],
-							"policy": {
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "pipeline1",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						}
-					]
+					"timeout": "0.12:00:00"
 				}
 			}
 		],
-		"variables": {
-			"value1": {
-				"type": "Boolean"
-			},
-			"value2": {
-				"type": "Boolean"
-			}
-		},
 		"annotations": []
 	}
 }
